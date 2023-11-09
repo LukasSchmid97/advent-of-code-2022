@@ -25,17 +25,15 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.30.0)
       parser (>= 3.2.1.0)
-    rubocop-daemon (0.3.2)
-      rubocop
     ruby-progressbar (1.13.0)
     unicode-display_width (2.5.0)
 
 PLATFORMS
   x64-mingw-ucrt
+  x86_64-linux
 
 DEPENDENCIES
   rubocop
-  rubocop-daemon
 
 BUNDLED WITH
    2.4.22

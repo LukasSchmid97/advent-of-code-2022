@@ -8,13 +8,6 @@ def char_to_prio(char)
   end
 end
 
-"vJrwpWtwJgWrhcsFMMfFFhFp
-jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
-PmmdzqPrVvPwwTWBwg
-wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
-ttgJtRGJQctTZtZT
-CrZsJsPPZsGzwwsLwLmpwMDw".split("\n")
-
 backpack_items = nil
 File.open 'input/day3_input.txt' do |puzzle_in|
   backpack_items = puzzle_in.read.split("\n")
