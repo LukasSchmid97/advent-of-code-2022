@@ -40,7 +40,7 @@ def score2(opponent_move, desired_result)
   # puts "#{opponent_move} #{desired_result} -> #{a_} #{b_} -> #{score}"
 end
 
-File.open 'src/day2_input.txt' do |puzzle_in|
+File.open 'input/day2_input.txt' do |puzzle_in|
   input_arr = puzzle_in.read.split("\n").collect(&:split)
 
   part1 = input_arr.inject(0) { |sum, round| sum + score(*round) }
