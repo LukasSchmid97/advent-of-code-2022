@@ -14,35 +14,34 @@ end
 # L 5
 # R 2"
 
-c_add = ->(vec1, vec2){ [vec1[0] + vec2[0], vec1[1] + vec2[1]] }
-c_inv = ->(vec){ [-vec[0], -vec[1]] }
-c_sub = ->(vec1, vec2){ c_add.call(vec1, c_inv.call(vec2))}
-c_2norm = ->(vec){ vec.collect(&:abs).sum }
-c_norm = ->(vec){ [vec[0]/[vec[0].abs, 1].max, vec[1]/[vec[1].abs, 1].max] }
+c_add = ->(vec1, vec2) { [vec1[0] + vec2[0], vec1[1] + vec2[1]] }
+c_inv = ->(vec) { [-vec[0], -vec[1]] }
+c_sub = ->(vec1, vec2) { c_add.call(vec1, c_inv.call(vec2)) }
+c_norm = ->(vec) { [vec[0] / [vec[0].abs, 1].max, vec[1] / [vec[1].abs, 1].max] }
 
 head_coords = [0, 0]
 tail_coords = [0, 0]
-tail_coord_history = [[0,0]]
+tail_coord_history = [[0, 0]]
 input_string.split("\n").each do |move|
-  dir, count = move.split(" ")
+  dir, count = move.split
   count.to_i.times do
     case dir
-    when "U"
+    when 'U'
       vec = [0, 1]
-    when "D"
+    when 'D'
       vec = [0, -1]
-    when "L"
+    when 'L'
       vec = [-1, 0]
-    when "R"
+    when 'R'
       vec = [1, 0]
     end
     head_coords = c_add.call(head_coords, vec)
     dx, dy = c_sub.call(head_coords, tail_coords)
-    if dx.abs > 1 || dy.abs > 1
-      tail_vec = c_norm.call([dx, dy])
-      tail_coords = c_add.call(tail_coords, tail_vec)
-      tail_coord_history.push(tail_coords)
-    end
+    next unless dx.abs > 1 || dy.abs > 1
+
+    tail_vec = c_norm.call([dx, dy])
+    tail_coords = c_add.call(tail_coords, tail_vec)
+    tail_coord_history.push(tail_coords)
   end
 end
 
@@ -50,18 +49,18 @@ puts tail_coord_history.uniq.count
 
 head_coords = [0, 0]
 tail_coords = 9.times.collect { [0, 0] }
-tail_coord_history = [[0,0]]
+tail_coord_history = [[0, 0]]
 input_string.split("\n").each do |move|
-  dir, count = move.split(" ")
+  dir, count = move.split
   count.to_i.times do
     case dir
-    when "U"
+    when 'U'
       vec = [0, 1]
-    when "D"
+    when 'D'
       vec = [0, -1]
-    when "L"
+    when 'L'
       vec = [-1, 0]
-    when "R"
+    when 'R'
       vec = [1, 0]
     end
     head_coords = c_add.call(head_coords, vec)
