@@ -9,7 +9,7 @@ def char_to_prio(char)
 end
 
 backpack_items = nil
-File.open 'input/day3_input.txt' do |puzzle_in|
+File.open 'input/day03_input.txt' do |puzzle_in|
   backpack_items = puzzle_in.read.split("\n")
 end
 backpack_sum = 0

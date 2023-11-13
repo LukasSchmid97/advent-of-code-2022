@@ -1,5 +1,5 @@
 input_string = nil
-File.open 'input/day5_input.txt' do |puzzle_in|
+File.open 'input/day05_input.txt' do |puzzle_in|
   input_string = puzzle_in.read
 end
 

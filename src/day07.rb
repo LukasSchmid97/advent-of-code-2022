@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 input_string = nil
-File.open 'input/day7_input.txt' do |puzzle_in|
+File.open 'input/day07_input.txt' do |puzzle_in|
   input_string = puzzle_in.read
 end
 
@@ -63,7 +63,7 @@ input_string.split("\n").each do |line|
   end
 end
 
-File.open 'day7_out.json', 'w' do |tree_out|
+File.open 'day07_out.json', 'w' do |tree_out|
   tree_out.write(dirtree)
 end
 # puts dirtree

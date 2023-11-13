@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 input_string = nil
-File.open 'input/day9_input.txt' do |puzzle_in|
+File.open 'input/day09_input.txt' do |puzzle_in|
   input_string = puzzle_in.read
 end
 
