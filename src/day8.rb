@@ -100,5 +100,4 @@ grid[0].zip(*grid[1..]).each_with_index do |col, col_index|
   end
 end
 
-
 puts vis_map.collect(&:max).max
