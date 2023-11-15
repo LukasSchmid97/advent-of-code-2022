@@ -26,6 +26,9 @@ GEM
     rubocop-ast (1.30.0)
       parser (>= 3.2.1.0)
     ruby-progressbar (1.13.0)
+    sorbet (0.5.11128)
+      sorbet-static (= 0.5.11128)
+    sorbet-static (0.5.11128-x86_64-linux)
     unicode-display_width (2.5.0)
 
 PLATFORMS
@@ -34,6 +37,7 @@ PLATFORMS
 
 DEPENDENCIES
   rubocop
+  sorbet
 
 BUNDLED WITH
    2.4.22

@@ -11,6 +11,7 @@ input
 /test/tmp/
 /test/version_tmp/
 /tmp/
+/sorbet/
 
 # Used by dotenv library to load environment variables.
 # .env

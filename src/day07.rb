@@ -35,15 +35,15 @@ current_dir = dirtree
 hierarchy = [dirtree]
 input_string.split("\n").each do |line|
   if /^\$/ =~ line
-    _, command, *dir = line.split(" ")
-    if command == "ls"
+    _, command, *dir = line.split
+    if command == 'ls'
       mode = :ls
-    elsif command == "cd"
+    elsif command == 'cd'
       mode = :cd
       # puts "Moving to #{dir}"
-      if dir == [".."]
+      if dir == ['..']
         current_dir = hierarchy.pop
-      elsif dir == ["/"]
+      elsif dir == ['/']
         current_dir = dirtree
         hierarchy = [dirtree]
       else
@@ -53,23 +53,21 @@ input_string.split("\n").each do |line|
     end
   elsif mode == :ls
     # puts "Listing contents of #{hierarchy[-1]}"
-    size_type, name = line.split(" ")
+    size_type, name = line.split
     # puts "Writing #{name} [#{size_type}] to #{current_dir}"
     current_dir[name] ||= if size_type == 'dir'
-                          {}
-                        else
-                          size_type.to_i
-                        end
+                            {}
+                          else
+                            size_type.to_i
+                          end
   end
 end
 
-File.open 'day07_out.json', 'w' do |tree_out|
-  tree_out.write(dirtree)
-end
+File.write('day07_out.json', dirtree)
 # puts dirtree
 dirs = []
 def recursive_get_size(node, dirs)
-  node.sum do |key, value|
+  node.sum do |_key, value|
     if value.is_a?(Hash)
       size = recursive_get_size(value, dirs)
       dirs.push(size)

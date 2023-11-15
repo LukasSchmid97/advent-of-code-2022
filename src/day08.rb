@@ -11,18 +11,17 @@ end
 # 33549
 # 35390"
 
-grid = input_string.split("\n").collect {|s| s.chars.collect(&:to_i)}
-vis_map = grid.dup.collect { |a| a.dup.collect {0}}
+grid = input_string.split("\n").collect { |s| s.chars.collect(&:to_i) }
+vis_map = grid.dup.collect { |a| a.dup.collect { 0 } }
 
 # rows
 num_rows = grid.size
 num_cols = grid.first.size
 
-
 max_row = Array.new(num_rows, -1)
 # from left
 grid.each_with_index do |col, col_index|
-  col.each_with_index do |row_value, row_index|
+  col.each_with_index do |_row_value, row_index|
     if grid[col_index][row_index] > max_row[col_index]
       vis_map[col_index][row_index] = 1
       max_row[col_index] = grid[col_index][row_index]
@@ -33,10 +32,10 @@ end
 max_row = Array.new(num_rows, -1)
 # from right
 grid.each_with_index do |col, col_index|
-  col.each_with_index do |row_value, row_index|
-    if grid[col_index][-row_index-1] > max_row[col_index]
-      vis_map[col_index][-row_index-1] = 1
-      max_row[col_index] = grid[col_index][-row_index-1]
+  col.each_with_index do |_row_value, row_index|
+    if grid[col_index][-row_index - 1] > max_row[col_index]
+      vis_map[col_index][-row_index - 1] = 1
+      max_row[col_index] = grid[col_index][-row_index - 1]
     end
   end
 end
@@ -44,7 +43,7 @@ end
 max_col = Array.new(num_cols, -1)
 # from top
 grid.each_with_index do |col, col_index|
-  col.each_with_index do |row_value, row_index|
+  col.each_with_index do |_row_value, row_index|
     if grid[row_index][col_index] > max_col[col_index]
       vis_map[row_index][col_index] = 1
       max_col[col_index] = grid[row_index][col_index]
@@ -55,10 +54,10 @@ end
 max_col = Array.new(num_cols, -1)
 # from bot
 grid.each_with_index do |col, col_index|
-  col.each_with_index do |row_value, row_index|
-    if grid[-row_index-1][col_index] > max_col[col_index]
-      vis_map[-row_index-1][col_index] = 1
-      max_col[col_index] = grid[-row_index-1][col_index]
+  col.each_with_index do |_row_value, row_index|
+    if grid[-row_index - 1][col_index] > max_col[col_index]
+      vis_map[-row_index - 1][col_index] = 1
+      max_col[col_index] = grid[-row_index - 1][col_index]
     end
   end
 end
@@ -86,7 +85,7 @@ grid.each_with_index do |col, col_index|
     vis_map[col_index][row_index] *= dist
   end
   tree_distances(col.reverse).each_with_index do |dist, row_index|
-    vis_map[col_index][-row_index-1] *= dist
+    vis_map[col_index][-row_index - 1] *= dist
   end
 end
 
@@ -96,7 +95,7 @@ grid[0].zip(*grid[1..]).each_with_index do |col, col_index|
     vis_map[row_index][col_index] *= dist
   end
   tree_distances(col.reverse).each_with_index do |dist, row_index|
-    vis_map[-row_index-1][col_index] *= dist
+    vis_map[-row_index - 1][col_index] *= dist
   end
 end
 
