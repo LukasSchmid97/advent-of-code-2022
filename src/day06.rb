@@ -9,7 +9,7 @@ end
 def first_unique_sequence_of(n, string)
   stack = string.chars[...n]
   string.chars[n..].each_with_index do |char, index|
-    if stack.uniq == stack
+    if stack.uniq.eq stack
       puts index + n
       break
     end

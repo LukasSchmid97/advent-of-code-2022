@@ -24,17 +24,17 @@ tail_coords = [0, 0]
 tail_coord_history = [[0, 0]]
 input_string.split("\n").each do |move|
   dir, count = move.split
+  case dir
+  when 'U'
+    vec = [0, 1]
+  when 'D'
+    vec = [0, -1]
+  when 'L'
+    vec = [-1, 0]
+  when 'R'
+    vec = [1, 0]
+  end
   count.to_i.times do
-    case dir
-    when 'U'
-      vec = [0, 1]
-    when 'D'
-      vec = [0, -1]
-    when 'L'
-      vec = [-1, 0]
-    when 'R'
-      vec = [1, 0]
-    end
     head_coords = c_add.call(head_coords, vec)
     dx, dy = c_sub.call(head_coords, tail_coords)
     next unless dx.abs > 1 || dy.abs > 1
